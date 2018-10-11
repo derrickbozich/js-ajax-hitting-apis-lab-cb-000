@@ -25,6 +25,7 @@ function getCommits(element){
   const req = new XMLHttpRequest();
   const name = element.dataset.repo;
   const username = element.dataset.repo;
+  debugger
 
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
