@@ -40,7 +40,7 @@ function getCommits(element){
   const req = new XMLHttpRequest();
   const name = element.dataset.repository;
   const username = element.dataset.username;
-  debugger
+  
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
   req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`);
