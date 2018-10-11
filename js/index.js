@@ -1,6 +1,6 @@
 // fetches repositories from github
 function getRepositories(){
-  const username = document.getElementById('username');
+  const username = document.getElementById('username').value;
 
   const req = new XMLHttpRequest();
   debugger
