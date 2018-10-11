@@ -35,6 +35,7 @@ function getCommits(element){
 }
 
 function displayCommits(){
+  debugger
   const commits = JSON.parse(this.responseText);
   console.log(commits);
   const commitList = `<ul>${commits.map(c => '<li>' + '<a href=' + c.html_url + '>'  + c.name + '</a>' + ' - ' + '<a href="#" data-repo=' + c.name + ' ' + 'onclick=getCommits(this)>Get Commits</a>' + '</li>').join('')}</ul>`;
