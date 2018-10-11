@@ -78,7 +78,7 @@ function getBranches(element){
 function displayBranches(){
   const branches = JSON.parse(this.responseText);
   console.log(branches);
-  const branchesData = '<ul>'
+  const branchesData = '<ul>' +
     branches
     .map(b => {
       return `
