@@ -22,7 +22,7 @@ function showRepositories(){
 }
 
 function getCommits(element){
-  debugger
+
   const username = document.getElementById('username').value;
 
   //creates a new XMLHttpRequest object
@@ -31,5 +31,6 @@ function getCommits(element){
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
   req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`);
+  debugger
   req.send();
 }
