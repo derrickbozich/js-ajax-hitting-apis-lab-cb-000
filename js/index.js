@@ -11,7 +11,7 @@ function getRepositories(){
   req.send();
 }
 
-function showRepositories(){
+function displayRepositories(){
   //parses response into JSON
   let repos = JSON.parse(this.responseText);
   console.log(repos);
