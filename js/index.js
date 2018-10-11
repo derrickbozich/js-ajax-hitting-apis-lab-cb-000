@@ -63,7 +63,4 @@ function displayCommits(){
           </li>`;
       }).join('') +'</ul>';
   document.getElementById('details').innerHTML = commitList;
-
-
-
 }
