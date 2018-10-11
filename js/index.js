@@ -64,3 +64,11 @@ function displayCommits(){
       }).join('') +'</ul>';
   document.getElementById('details').innerHTML = commitList;
 }
+
+function getBranches(element){
+  let username = element.dataset.username;
+  let repository = element.dataset.repository;
+  
+  let req = new XMLHttpRequest();
+  req.open("GET", `https://api.github.com/repos/${username}/${repository}/branches`)
+}
