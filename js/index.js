@@ -82,9 +82,7 @@ function displayBranches(){
     branches
     .map(b => {
       return `
-      <ul>
-        <li>
-      </ul>
+        <li> ${b.name} </li>
       `
     }).join('') + '</ul>';
 }
