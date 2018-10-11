@@ -21,11 +21,13 @@ function showRepositories(){
 
 function getCommits(element){
 
-  const username = document.getElementById('username').value;
+
 
   //creates a new XMLHttpRequest object
   const req = new XMLHttpRequest();
   const name = element.dataset.repo;
+  const username = element.dataset.repo;
+  
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
   req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`);
