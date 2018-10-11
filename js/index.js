@@ -50,15 +50,14 @@ function getCommits(element){
 function displayCommits(){
 
   const commits = JSON.parse(this.responseText);
-  debugger
   console.log(commits);
   const commitList =
     '<ul>' +
     repos
       .map(repo => {`
           <li>
-            github name: ${repo.author.login} - 
-            full name: ${repo.commit.author.name} - 
+            github name: ${repo.author.login} -
+            full name: ${repo.commit.author.name} -
             message: ${repo.commit.message}
           </li>`;
       })
