@@ -70,6 +70,7 @@ function getBranches(element){
   let repository = element.dataset.repository;
 
   let req = new XMLHttpRequest();
+  req.addEventListener('load', displayBranches)
   req.open("GET", `https://api.github.com/repos/${username}/${repository}/branches`);
   req.send();
 }
