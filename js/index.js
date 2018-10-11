@@ -15,9 +15,7 @@ function showRepositories(){
   //parses response into JSON
   let repos = JSON.parse(this.responseText);
   console.log(repos);
-
   const repoList = `<ul>${repos.map(r => '<li>' + '<a href=' + r.html_url + '>'  + r.name + '</a>' + ' - ' + '<a href="#" data-repo=' + r.name + ' ' + 'onclick=getCommits(this)>Get Commits</a>' + '</li>').join('')}</ul>`;
-
   document.getElementById('repositories').innerHTML = repoList;
 }
 
@@ -31,6 +29,14 @@ function getCommits(element){
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
   req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`);
-  debugger
   req.send();
+}
+
+function displayCommits(){
+  const commits = JSON.parse(this.responseText);
+  console.log(commits);
+  const commitList = `<ul>${commits.map(c => '<li>' + '<a href=' + c.html_url + '>'  + c.name + '</a>' + ' - ' + '<a href="#" data-repo=' + c.name + ' ' + 'onclick=getCommits(this)>Get Commits</a>' + '</li>').join('')}</ul>`;
+
+
+  
 }
