@@ -40,7 +40,7 @@ function getCommits(element){
   const req = new XMLHttpRequest();
   const name = element.dataset.dataRepoName;
   const username = element.dataset.dataUsername;
-
+  debugger
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
   req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`);
@@ -52,7 +52,23 @@ function displayCommits(){
   const commits = JSON.parse(this.responseText);
   debugger
   console.log(commits);
-  const commitList = `<ul>${commits.map(c => '<li> Github name: ' + c.author.login + ' - Full name: ' + c.commit.author.name + ' - Commit message: ' + c.commit.message + ' </li>').join('')}</ul>`;
+  const commitList =
+    '<ul>' +
+    repos
+      .map(repo => {
+        const dataUsername = 'data-username="' + repo.owner.login + '"';
+        const dataRepoName = 'data-repository="' + repo.name + '"';
+        return `
+          <li>
+            <h2>${repo.name}</h2>
+            <a href="${repo.html_url}">${repo.html_url}</a><br>
+            <a href="#" ${dataRepoName} ${dataUsername} onclick="getCommits(this)">Get Commits</a><br>
+            <a href="#" ${dataRepoName} ${dataUsername} onclick="getBranches(this)">Get Branches</a></li>
+          </li>`;
+      })
+      .join('') +
+    '</ul>';
+
   document.getElementById('details').innerHTML = commitList;
 
 
