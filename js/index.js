@@ -85,4 +85,5 @@ function displayBranches(){
         <li> ${b.name} </li>
       `
     }).join('') + '</ul>';
+  debugger
 }
