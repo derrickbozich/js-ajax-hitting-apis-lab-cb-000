@@ -76,7 +76,6 @@ function getBranches(element){
 }
 
 function displayBranches(){
-  debugger
   const branches = JSON.parse(this.responseText);
   console.log(branches);
   const branchesData = '<ul>'
@@ -84,7 +83,7 @@ function displayBranches(){
     .map(b => {
       return `
       <ul>
-        <li> 
+        <li>
       </ul>
       `
     }).join('') + '</ul>';
