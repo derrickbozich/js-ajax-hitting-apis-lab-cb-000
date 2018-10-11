@@ -55,15 +55,11 @@ function displayCommits(){
   const commitList =
     '<ul>' +
     repos
-      .map(repo => {
-        const dataUsername = 'data-username="' + repo.owner.login + '"';
-        const dataRepoName = 'data-repository="' + repo.name + '"';
-        return `
+      .map(repo => {`
           <li>
-            <h2>${repo.name}</h2>
-            <a href="${repo.html_url}">${repo.html_url}</a><br>
-            <a href="#" ${dataRepoName} ${dataUsername} onclick="getCommits(this)">Get Commits</a><br>
-            <a href="#" ${dataRepoName} ${dataUsername} onclick="getBranches(this)">Get Branches</a></li>
+            github name: ${repo.author.login} - 
+            full name: ${repo.commit.author.name} - 
+            message: ${repo.commit.message}
           </li>`;
       })
       .join('') +
