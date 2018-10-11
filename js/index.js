@@ -24,7 +24,7 @@ function getCommits(element){
   //creates a new XMLHttpRequest object
   const req = new XMLHttpRequest();
   const name = element.dataset.repo;
-  const username = element.dataset.repo;
+  const username = element.dataset.username;
   debugger
 
   //callback that invokes showRepositories once the data loads
