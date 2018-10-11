@@ -15,7 +15,22 @@ function showRepositories(){
   //parses response into JSON
   let repos = JSON.parse(this.responseText);
   console.log(repos);
-  const repoList = `<ul>${repos.map(r => '<li>' + '<a href=' + r.html_url + '>'  + r.name + '</a>' + ' - ' + '<a href="#" data-repo=' + r.name + ' ' + 'data-username=' + r.owner.login + ' onclick=getCommits(this)>Get Commits</a>' + '</li>').join('')}</ul>`;
+  const repoList =
+    '<ul>' +
+    repos
+      .map(repo => {
+        const dataUsername = 'data-username="' + repo.owner.login + '"';
+        const dataRepoName = 'data-repository="' + repo.name + '"';
+        return `
+          <li>
+            <h2>${repo.name}</h2>
+            <a href="${repo.html_url}">${repo.html_url}</a><br>
+            <a href="#" ${dataRepoName} ${dataUsername} onclick="getCommits(this)">Get Commits</a><br>
+            <a href="#" ${dataRepoName} ${dataUsername} onclick="getBranches(this)">Get Branches</a></li>
+          </li>`;
+      })
+      .join('') +
+    '</ul>';
   document.getElementById('repositories').innerHTML = repoList;
 }
 
@@ -23,8 +38,8 @@ function getCommits(element){
 
   //creates a new XMLHttpRequest object
   const req = new XMLHttpRequest();
-  const name = element.dataset.repo;
-  const username = element.dataset.username;
+  const name = element.dataset.dataRepoName;
+  const username = element.dataset.dataUsername;
 
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
@@ -33,7 +48,7 @@ function getCommits(element){
 }
 
 function displayCommits(){
-  
+
   const commits = JSON.parse(this.responseText);
   console.log(commits);
   const commitList = `<ul>${commits.map(c => '<li> Github name: ' + c.author.login + ' - Full name: ' + c.commit.author.name + ' - Commit message: ' + c.commit.message + ' </li>').join('')}</ul>`;
