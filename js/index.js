@@ -21,6 +21,7 @@ function showRepositories(){
 }
 
 function getCommits(){
+  debugger
   const username = document.getElementById('username').value;
 
   //creates a new XMLHttpRequest object
