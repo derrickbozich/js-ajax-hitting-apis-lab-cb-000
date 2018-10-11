@@ -11,5 +11,5 @@ function getRepositories(){
 function showRepositories(){
   let repos = JSON.parse(this.responseText);
   console.log(repos);
-  
+  debugger
 }
