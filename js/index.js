@@ -84,7 +84,7 @@ function displayBranches(){
     .map(b => {
       return `
       <ul>
-        <li> ${}
+        <li> 
       </ul>
       `
     }).join('') + '</ul>';
