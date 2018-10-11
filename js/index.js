@@ -54,15 +54,14 @@ function displayCommits(){
   const commitList =
     '<ul>' +
     commits
-      .map(c => {`
+      .map(c => {
+        return `
           <li>
             github name: ${c.author.login} -
             full name: ${c.commit.author.name} -
             message: ${c.commit.message}
           </li>`;
-      })
-      .join('') +
-    '</ul>';
+      }).join('') +'</ul>';
   debugger
   document.getElementById('details').innerHTML = commitList;
 
