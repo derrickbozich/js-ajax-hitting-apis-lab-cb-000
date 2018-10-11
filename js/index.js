@@ -35,7 +35,6 @@ function showRepositories(){
 }
 
 function getCommits(element){
-
   //creates a new XMLHttpRequest object
   const req = new XMLHttpRequest();
   const name = element.dataset.repository;
@@ -47,8 +46,8 @@ function getCommits(element){
   req.send();
 }
 
+//displays commits of selected repo
 function displayCommits(){
-
   const commits = JSON.parse(this.responseText);
   console.log(commits);
   const commitList =
@@ -68,7 +67,6 @@ function displayCommits(){
 function getBranches(element){
   let username = element.dataset.username;
   let repository = element.dataset.repository;
-
   let req = new XMLHttpRequest();
   req.addEventListener('load', displayBranches)
   req.open("GET", `https://api.github.com/repos/${username}/${repository}/branches`);
