@@ -21,15 +21,15 @@ function showRepositories(){
   document.getElementById('repositories').innerHTML = repoList;
 }
 
-function getCommits(){
+function getCommits(element){
   debugger
   const username = document.getElementById('username').value;
 
   //creates a new XMLHttpRequest object
   const req = new XMLHttpRequest();
-
+  const name = element.dataset.repo;
   //callback that invokes showRepositories once the data loads
-  req.addEventListener('load', showRepositories);
-  req.open("GET", `https://api.github.com/users/${username}/repos/:owner/:repo/commits`);
+  req.addEventListener('load', displayCommits);
+  req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`);
   req.send();
 }
