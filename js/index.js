@@ -40,7 +40,7 @@ function getCommits(element){
   const req = new XMLHttpRequest();
   const name = element.dataset.repository;
   const username = element.dataset.username;
-  
+
   //callback that invokes showRepositories once the data loads
   req.addEventListener('load', displayCommits);
   req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`);
@@ -53,12 +53,12 @@ function displayCommits(){
   console.log(commits);
   const commitList =
     '<ul>' +
-    repos
-      .map(repo => {`
+    commits
+      .map(c => {`
           <li>
-            github name: ${repo.author.login} -
-            full name: ${repo.commit.author.name} -
-            message: ${repo.commit.message}
+            github name: ${c.author.login} -
+            full name: ${c.commit.author.name} -
+            message: ${c.commit.message}
           </li>`;
       })
       .join('') +
