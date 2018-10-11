@@ -62,7 +62,6 @@ function displayCommits(){
             message: ${c.commit.message}
           </li>`;
       }).join('') +'</ul>';
-  debugger
   document.getElementById('details').innerHTML = commitList;
 
 
