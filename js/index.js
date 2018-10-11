@@ -85,5 +85,6 @@ function displayBranches(){
         <li> ${b.name} </li>
       `
     }).join('') + '</ul>';
-  debugger
+  document.getElementById('details').innerHTML = branchesData;
+
 }
