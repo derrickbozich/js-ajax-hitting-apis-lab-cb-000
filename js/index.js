@@ -74,3 +74,7 @@ function getBranches(element){
   req.open("GET", `https://api.github.com/repos/${username}/${repository}/branches`);
   req.send();
 }
+
+function displayBranches(){
+  debugger
+}
